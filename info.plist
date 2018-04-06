@@ -3,11 +3,33 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>org.netcetera.alfred-workflow.SimulatorAppFinder</string>
+	<string>com.buttered-cat.alfred-workflow.iOSSimulator</string>
 	<key>category</key>
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
+		<key>0F91FB1D-068E-48DE-AF19-A5DFA2A1A2F3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7A9B4E1F-0B3A-40F9-A85A-201C599CDD90</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>15E7ABF3-218E-47E5-B120-83DEBC938433</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0F91FB1D-068E-48DE-AF19-A5DFA2A1A2F3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>38DFD2DA-6DD1-403F-8F71-499B98BCCADD</key>
 		<array>
 			<dict>
@@ -19,46 +41,88 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>8C7D1146-E66D-46AF-9EDE-A63D50164F16</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>963E6413-9DDC-4642-A184-14764565F549</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>963E6413-9DDC-4642-A184-14764565F549</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>04421F78-4E29-45C8-95EC-987A6F26F016</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>AC920237-C64C-4EE1-AF78-C60125CC3460</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C7DBD597-2AC9-4177-BC16-176EBB6A2D86</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>C7DBD597-2AC9-4177-BC16-176EBB6A2D86</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C11961A2-A67A-4D48-8792-90AA10AD8E4C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
-	<string>Simon Whitaker</string>
+	<string>Jeremy Knope</string>
 	<key>description</key>
-	<string>Finds apps installed in the iOS simulator based on their display name</string>
+	<string>Find &amp; delete sim apps, erase simulators, and more</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Find Simulator Apps v0.1</string>
+	<string>iOS Simulator v1.2</string>
 	<key>objects</key>
 	<array>
 		<dict>
 			<key>config</key>
-			<dict/>
-			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
-			<key>uid</key>
-			<string>4EB61527-10BC-40EE-9185-E988A89344D7</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>keyword</key>
 				<string>sim</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>1</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
 				<key>runningsubtext</key>
 				<string>Searching for apps matching {query}</string>
 				<key>script</key>
-				<string>./find_apps "{query}"</string>
+				<string>python ./find_sim_apps.py "{query}"</string>
 				<key>subtext</key>
 				<string>Search for apps matching {query}</string>
 				<key>title</key>
 				<string>Search for simulator apps</string>
 				<key>type</key>
-				<integer>5</integer>
+				<integer>0</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -69,20 +133,296 @@
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>4EB61527-10BC-40EE-9185-E988A89344D7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>script</key>
+				<string>python ./uninstall_app.py {query}</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>963E6413-9DDC-4642-A184-14764565F549</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Uninstall Simulator App</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>04421F78-4E29-45C8-95EC-987A6F26F016</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>simdel</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>1</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string>Please wait</string>
+				<key>script</key>
+				<string>python ./find_app_ids.py "{query}"</string>
+				<key>subtext</key>
+				<string>Uninstalls selected app from its simualtor</string>
+				<key>title</key>
+				<string>Uninstall Simulator App</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>8C7D1146-E66D-46AF-9EDE-A63D50164F16</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>simreset</string>
+				<key>subtext</key>
+				<string>Resets all iOS simulators in all found Xcodes</string>
+				<key>text</key>
+				<string>Reset iOS Simulators</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>15E7ABF3-218E-47E5-B120-83DEBC938433</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>ruby ./reset-all.rb</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0F91FB1D-068E-48DE-AF19-A5DFA2A1A2F3</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>All iOS Simulators have been Reset if possible</string>
+				<key>title</key>
+				<string>Simulators Reset</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>7A9B4E1F-0B3A-40F9-A85A-201C599CDD90</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>python ./erase_device.py "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C7DBD597-2AC9-4177-BC16-176EBB6A2D86</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>simerase</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Please Wait</string>
+				<key>script</key>
+				<string>python ./find_device_ids.py "{query}"</string>
+				<key>subtext</key>
+				<string>Erases a particular iOS Simulator</string>
+				<key>title</key>
+				<string>Erase a iOS Simulator</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>AC920237-C64C-4EE1-AF78-C60125CC3460</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Simulator Erased</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>C11961A2-A67A-4D48-8792-90AA10AD8E4C</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>04421F78-4E29-45C8-95EC-987A6F26F016</key>
+		<dict>
+			<key>ypos</key>
+			<real>140</real>
+		</dict>
+		<key>0F91FB1D-068E-48DE-AF19-A5DFA2A1A2F3</key>
+		<dict>
+			<key>ypos</key>
+			<real>240</real>
+		</dict>
+		<key>15E7ABF3-218E-47E5-B120-83DEBC938433</key>
+		<dict>
+			<key>ypos</key>
+			<real>240</real>
+		</dict>
 		<key>38DFD2DA-6DD1-403F-8F71-499B98BCCADD</key>
 		<dict>
 			<key>ypos</key>
-			<real>150</real>
+			<real>40</real>
 		</dict>
 		<key>4EB61527-10BC-40EE-9185-E988A89344D7</key>
 		<dict>
 			<key>ypos</key>
-			<real>150</real>
+			<real>40</real>
+		</dict>
+		<key>7A9B4E1F-0B3A-40F9-A85A-201C599CDD90</key>
+		<dict>
+			<key>ypos</key>
+			<real>240</real>
+		</dict>
+		<key>8C7D1146-E66D-46AF-9EDE-A63D50164F16</key>
+		<dict>
+			<key>ypos</key>
+			<real>140</real>
+		</dict>
+		<key>963E6413-9DDC-4642-A184-14764565F549</key>
+		<dict>
+			<key>ypos</key>
+			<real>140</real>
+		</dict>
+		<key>AC920237-C64C-4EE1-AF78-C60125CC3460</key>
+		<dict>
+			<key>ypos</key>
+			<real>340</real>
+		</dict>
+		<key>C11961A2-A67A-4D48-8792-90AA10AD8E4C</key>
+		<dict>
+			<key>ypos</key>
+			<real>340</real>
+		</dict>
+		<key>C7DBD597-2AC9-4177-BC16-176EBB6A2D86</key>
+		<dict>
+			<key>ypos</key>
+			<real>340</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
